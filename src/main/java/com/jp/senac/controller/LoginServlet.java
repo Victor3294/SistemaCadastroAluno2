@@ -23,10 +23,11 @@ public class LoginServlet extends HttpServlet {
 		if(usuario.equals("admin")  && senha.equals("admin")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario);
+			session.setMaxInactiveInterval(500);
 			request.getRequestDispatcher("listarAlunos.jsp").forward(request, response);
 		} else {
-			request.setAttribute("mensagem", "Usuario e/ou senha inválida");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("index.jsp?erro=1").forward(request, response);
 		}
 
 	}

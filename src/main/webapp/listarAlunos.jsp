@@ -8,8 +8,11 @@
 <title>Lista de Alunos</title>
 </head>
 <body>
-
-<% String usuario = (String) session.getAttribute("usuario");
+<% String usuario = (String) session.getAttribute("usuario"); %>
+<% if(usuario == null) {
+	response.sendRedirect("index.jsp?erro=2");
+}%> 
+<% 
 	out.print("Bem vindo, "+usuario+"<br>");
 %>
 
@@ -32,15 +35,17 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 			</tr>
 			<% for (Aluno aluno : listaAlunos) { %>
 			<tr>
-				<td><a href="DetalharServlet?nome=<%=aluno.getNome()%>">Detalhar</a></td>
+				<td><a href="DetalharServlet?id=<%=aluno.getId()%>">Detalhar</a></td>
 				<td><%=aluno.getNome()%> </td>
 				<td><%=aluno.getIdade()%> </td>
 				<td><%=aluno.getGenero()%> </td>
 				<td><%=aluno.getSemestre()%> </td>
-				<td><a href="ExcluirServlet?nome=<%=aluno.getNome()%>">Excluir</a></td>
+				<td><%=aluno.getMatricula() %></td>
+				<td><a href="ExcluirServlet?id=<%=aluno.getId()%>">Excluir</a></td>
 			</tr>
 			<% } %>
 		</table>
 <% } %>
+<a href="index.jsp">Deslogar</a>
 </body>
 </html>

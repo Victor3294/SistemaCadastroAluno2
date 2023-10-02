@@ -7,6 +7,15 @@
 <title>Cadastrar Aluno</title>
 </head>
 <body>
+<% String usuario = (String) session.getAttribute("usuario"); %>
+<% if(usuario == null) {
+	response.sendRedirect("index.jsp?erro=2");
+}%> 
+	
+
+
+
+
 
 <h1> Cadastro Aluno</h1>
 
@@ -32,7 +41,6 @@
 	<input type="submit" value="Confirmar Cadastro">
 	<a href="listarAlunos.jsp">Voltar</a>
 </form>
-
 
 
 

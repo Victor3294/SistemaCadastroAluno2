@@ -1,8 +1,10 @@
 package com.jp.senac.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.jp.senac.model.Aluno;
 
@@ -30,12 +32,35 @@ public class ConfirmarCadastroServlet extends HttpServlet {
 		
 		// Recuperando a lista da sessão, caso não exista, cria
 		List<Aluno> listaAlunos = (List<Aluno>) session.getAttribute("listaAlunos");
+		int max = 0;
+		int id = 0;
+		
 		if (listaAlunos == null) {
 			listaAlunos = new ArrayList<>(); // Criando a lista
+		}else {
+			for(Aluno a : listaAlunos) {
+				if(a.getId() > max) {
+					max = a.getId();
+					id = max;
+				}
+			}
+		}
+		
+		String matricula = "";
+		LocalDate dataAtual = LocalDate.now();
+		int mes = dataAtual.getMonthValue();
+		int semestrezao = (mes < 7) ? 1 : 2;
+		String ano = String.valueOf(dataAtual.getYear());
+		Random random = new Random();
+		matricula = ano + String.valueOf(mes) + "0" + semestrezao + idade;
+		
+	
+		for (int i = 0; i < 4; i++) {
+			matricula += random.nextInt(10);
 		}
 		
 		// Guardar no objeto aluno
-		Aluno aluno = new Aluno(nome, idade, semestre, genero);
+		Aluno aluno = new Aluno(nome, idade, semestre, genero, id+1, matricula);
 		
 		// Adicionando aluno na lista (INSERT)
 		listaAlunos.add(aluno);

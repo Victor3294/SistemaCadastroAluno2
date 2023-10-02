@@ -1,21 +1,39 @@
 package com.jp.senac.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 	
 	private String nome;
 	private String idade;
 	private String semestre;
-	private String genero; 
+	private String genero;
+	private Integer id;
+	private String matricula;
 	
-	public Aluno() {
-		
+	public Aluno() { 
 	}
 	
-	public Aluno(String nome, String idade, String semestre, String genero) {
+	public Aluno(String nome, String idade, String semestre, String genero, Integer id, String matricula) {
 		this.nome = nome;
 		this.idade = idade;
 		this.semestre = semestre;
 		this.genero = genero;
+		this.id = id;
+		this.matricula = matricula;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getMatricula() {
+		return matricula;
 	}
 
 	public String getNome() {

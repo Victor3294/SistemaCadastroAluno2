@@ -8,7 +8,10 @@
 <title>Alterar Aluno</title>
 </head>
 <body>
-
+<% String usuario = (String) session.getAttribute("usuario"); %>
+<% if(usuario == null) {
+	response.sendRedirect("index.jsp?erro=2");
+}%> 
 <% Aluno aluno = (Aluno) request.getAttribute("aluno"); %>
 
 
@@ -16,7 +19,7 @@
 
 <form action="ConfirmarAlteracaoServlet" method="post">
 
-<input type="hidden" name="nomeAntigo" value="<%=aluno.getNome() %>">
+<input type="hidden" name="id" value="<%=aluno.getId() %>">
 
 Nome:
 <input type="text" name="nome" value="<%=aluno.getNome() %>">

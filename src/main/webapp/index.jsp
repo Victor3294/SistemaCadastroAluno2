@@ -22,7 +22,14 @@
 	<br><br>
 </form>
 
-<%=request.getAttribute("mensagem") == null ? "" : request.getAttribute("mensagem")%>
+<%String erro = (String) request.getParameter("erro"); %>
+<%if(erro!=null){ 
+	if(erro.toString().equals("1")){
+%>	<p>Usuário ou senha incorreta</p>
+<%} if(erro.toString().equals("2"))  {%>
+	<p>Sessão encerrada faça login novamente<p>
+
+<%} } %>
 
 
 

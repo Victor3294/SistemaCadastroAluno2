@@ -17,12 +17,12 @@ public class DetalharServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nome = request.getParameter("nome");
+		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		List<Aluno> listaAlunos = (List<Aluno>) session.getAttribute("listaAlunos");
 		Aluno aluno = null;
 		for(Aluno a: listaAlunos) {
-			if(a.getNome().equals(nome)) {
+			if(a.getId().equals(id)) {
 				aluno = a;
 			}
 		}
