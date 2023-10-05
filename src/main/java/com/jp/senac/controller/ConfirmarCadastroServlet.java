@@ -52,7 +52,7 @@ public class ConfirmarCadastroServlet extends HttpServlet {
 		int semestrezao = (mes < 7) ? 1 : 2;
 		String ano = String.valueOf(dataAtual.getYear());
 		Random random = new Random();
-		matricula = ano + String.valueOf(mes) + "0" + semestrezao + idade;
+		matricula = ano + String.format("%02d", mes) + "0" + semestrezao + String.format("%02d", Integer.parseInt(idade));
 		
 	
 		for (int i = 0; i < 4; i++) {
@@ -68,7 +68,7 @@ public class ConfirmarCadastroServlet extends HttpServlet {
 		session.setAttribute("listaAlunos", listaAlunos);
 		request.setAttribute("aluno", aluno);
 		
-		// Encaminhar a requisição para o JSP
+		// Encaminhar a requisição para o JSP	
 		request.getRequestDispatcher("detalharAluno.jsp").forward(request, response);
 		
 		

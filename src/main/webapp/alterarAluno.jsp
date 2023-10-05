@@ -31,8 +31,8 @@ Idade:
 
 Semestre:
 <select name="semestre">
-	<option value="Primeiro" <%=aluno.getSemestre().equals("Primeiro")  ? "selected"  :  ""%>>Primeiro</option>   
-	<option value="Segundo" <%=aluno.getSemestre().equals("Segundo")  ? "selected"  :  ""%>>Segundo</option>   
+	<option value="Primeiro" <%=aluno.getSemestre().equals("Primeiro")  ? "selected" : ""%>>Primeiro</option>   
+	<option value="Segundo" <%=aluno.getSemestre().equals("Segundo")  ? "selected" : ""%>>Segundo</option>   
 </select>
 <br><br>
 

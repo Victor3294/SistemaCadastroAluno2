@@ -31,9 +31,9 @@
 	</select><br><br>
 	
 	Gênero:
-	<input type="radio" name="genero" value="Masculino">
+	<input type="radio" name="genero" value="Masculino" required>
 	Masculino
-	<input type="radio" name="genero" value="Feminino">
+	<input type="radio" name="genero" value="Feminino" required>
 	Feminino
 	<br><br>
 	
