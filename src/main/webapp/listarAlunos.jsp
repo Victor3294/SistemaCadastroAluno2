@@ -31,6 +31,7 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 				<th>Idade</th>
 				<th>Sexo</th>
 				<th>Semestre</th>
+				<th>Matricula</th>
 				<th>Excluir</th>
 			</tr>
 			<% for (Aluno aluno : listaAlunos) { %>
