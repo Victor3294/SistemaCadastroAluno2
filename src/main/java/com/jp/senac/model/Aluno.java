@@ -23,6 +23,14 @@ public class Aluno {
 		this.id = id;
 		this.matricula = matricula;
 	}
+	
+	public Aluno(String nome, String idade, String semestre, String genero, String matricula) {
+		this.nome = nome;
+		this.idade = idade;
+		this.semestre = semestre;
+		this.genero = genero;
+		this.matricula = matricula;
+	}
 
 	public Integer getId() {
 		return id;
