@@ -10,23 +10,22 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 
-public class DetalharServlet extends HttpServlet {
+public class ListarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
+    
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AlunoJDBCdao dao = new AlunoJDBCdao();
-		Aluno aluno = dao.pesquisarPorId(id);
-		request.setAttribute("aluno", aluno);
-		request.getRequestDispatcher("detalharAluno.jsp").forward(request, response);
-		
+		List<Aluno> listaAlunos;
+		try {
+			listaAlunos = dao.listarAlunos();
+			request.setAttribute("listaAlunos", listaAlunos);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("listarAlunos.jsp").forward(request, response);
 	}
-
-	
-	
 
 }

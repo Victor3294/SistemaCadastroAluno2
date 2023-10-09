@@ -20,6 +20,7 @@
 <form action="ConfirmarAlteracaoServlet" method="post">
 
 <input type="hidden" name="id" value="<%=aluno.getId() %>">
+<input type="hidden" name="matricula" value="<%=aluno.getMatricula() %>">
 
 Nome:
 <input type="text" name="nome" value="<%=aluno.getNome() %>">
@@ -38,15 +39,15 @@ Semestre:
 
 
 Genero:<br>
-<input type="radio" name="genero" value="masculino" <%=aluno.getGenero().equals("Masculino") ? "checked": "" %> >
+<input type="radio" name="genero" value="masculino" <%=aluno.getGenero().equals("Masculino") ? "checked": "" %> required >
 Masculino<br>
-<input type="radio" name="genero" value="feminino" <%=aluno.getGenero().equals("Feminino") ? "checked": "" %>>
+<input type="radio" name="genero" value="feminino" <%=aluno.getGenero().equals("Feminino") ? "checked": "" %> required>
 Feminino
 <br><br>
 
 
 <input type="submit" value="Confirmar Alteração">
-<a href="listarAlunos.jsp">Voltar</a>
+<a href="ListarServlet">Voltar</a>
 </form>
 
 

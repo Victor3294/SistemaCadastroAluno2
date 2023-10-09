@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.jp.senac.dao.AlunoJDBCdao;
 import com.jp.senac.model.Aluno;
 
 import jakarta.servlet.ServletException;
@@ -30,21 +31,8 @@ public class ConfirmarCadastroServlet extends HttpServlet {
 		String genero = request.getParameter("genero");
 		String semestre = request.getParameter("semestre");
 		
-		// Recuperando a lista da sessão, caso não exista, cria
-		List<Aluno> listaAlunos = (List<Aluno>) session.getAttribute("listaAlunos");
-		int max = 0;
-		int id = 0;
+		AlunoJDBCdao dao = new AlunoJDBCdao();
 		
-		if (listaAlunos == null) {
-			listaAlunos = new ArrayList<>(); // Criando a lista
-		}else {
-			for(Aluno a : listaAlunos) {
-				if(a.getId() > max) {
-					max = a.getId();
-					id = max;
-				}
-			}
-		}
 		
 		String matricula = "";
 		LocalDate dataAtual = LocalDate.now();
@@ -60,13 +48,9 @@ public class ConfirmarCadastroServlet extends HttpServlet {
 		}
 		
 		// Guardar no objeto aluno
-		Aluno aluno = new Aluno(nome, idade, semestre, genero, id+1, matricula);
-		
-		// Adicionando aluno na lista (INSERT)
-		listaAlunos.add(aluno);
-		
-		session.setAttribute("listaAlunos", listaAlunos);
-		request.setAttribute("aluno", aluno);
+		Aluno aluno = new Aluno(nome, idade, semestre, genero, matricula);
+		Aluno alunoCadastrado = dao.cadastrarAluno(aluno);
+		request.setAttribute("aluno", alunoCadastrado);
 		
 		// Encaminhar a requisição para o JSP	
 		request.getRequestDispatcher("detalharAluno.jsp").forward(request, response);

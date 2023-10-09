@@ -5,18 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lista de Alunos</title>
+<title>Resultado da pesquisa</title>
 </head>
 <body>
 <% String usuario = (String) session.getAttribute("usuario"); %>
 <% if(usuario == null) {
 	response.sendRedirect("index.jsp?erro=2");
 }%> 
-<% 
-	out.print("Bem vindo, "+usuario+"<br>");
-%>
 
-Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
+
 
 <form action="PesquisarMatriculaNomeServlet" method="post">
 	Pesquisar por:
@@ -29,12 +26,12 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 	<input type="submit" value="Pesquisar">
 </form>
 
-<%List<Aluno> listaAlunos = (List<Aluno>) request.getAttribute("listaAlunos");  %>
+<%List<Aluno> listaAlunosSelecionados = (List<Aluno>) request.getAttribute("listaAlunosSelecionados");  %>
 
-<% if (listaAlunos == null) { %>
+<% if (listaAlunosSelecionados == null) { %>
 		<h3>Nenhum aluno cadastrado</h3>
 <% } else { %>
-		<h2>Alunos cadastrados</h2>
+		<h2>Alunos Procurados</h2>
 		<table border="1">
 			<tr>
 				<th>Detalhar</th>
@@ -45,7 +42,7 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 				<th>Matricula</th>
 				<th>Excluir</th>
 			</tr>
-			<% for (Aluno aluno : listaAlunos) { %>
+			<% for (Aluno aluno : listaAlunosSelecionados) { %>
 			<tr>
 				<td><a href="DetalharServlet?id=<%=aluno.getId()%>">Detalhar</a></td>
 				<td><%=aluno.getNome()%> </td>
@@ -58,6 +55,6 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 			<% } %>
 		</table>
 <% } %>
-<a href="index.jsp">Deslogar</a>
+<a href="ListarServlet">Voltar para a lista</a>
 </body>
 </html>
