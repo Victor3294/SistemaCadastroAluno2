@@ -13,7 +13,7 @@
 	response.sendRedirect("index.jsp?erro=2");
 }%> 
 
-
+Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 
 <form action="PesquisarMatriculaNomeServlet" method="post">
 	Pesquisar por:

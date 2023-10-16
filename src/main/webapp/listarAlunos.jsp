@@ -58,6 +58,6 @@ Clique <a href="cadastrarAluno.jsp">aqui</a> para cadastrar um novo aluno
 			<% } %>
 		</table>
 <% } %>
-<a href="index.jsp">Deslogar</a>
+<a href="LogoutServlet">Deslogar</a>
 </body>
 </html>

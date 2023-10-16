@@ -104,7 +104,7 @@ public class AlunoJDBCdao {
 			try {
 				Connection con = getConexao();
 				PreparedStatement pst = con.prepareStatement(query);
-				pst.setString(1, pesquisa);
+				
 				ResultSet rs = pst.executeQuery();
 				while(rs.next()) {
 					int id = rs.getInt(1);
@@ -123,11 +123,10 @@ public class AlunoJDBCdao {
 			}
 		}
 		else if(opcao.equals("Nome")) {
-			String query = "Select * from alunos WHERE nome LIKE '%"+pesquisa+"%' ";
+			String query = "Select * from alunos WHERE nome LIKE '%"+pesquisa+"%'";
 			try {
 				Connection con = getConexao();
 				PreparedStatement pst = con.prepareStatement(query);
-				pst.setString(1, pesquisa);
 				ResultSet rs = pst.executeQuery();
 				while(rs.next()) {
 					int id = rs.getInt(1);
